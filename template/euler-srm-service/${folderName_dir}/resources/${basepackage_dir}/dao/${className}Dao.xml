@@ -1,0 +1,85 @@
+<#include "/macro.include"/>
+<#assign className = table.className>   
+<#assign classNameLower = className?uncap_first> 
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="${basepackage}.dao.${className}Dao"> 
+     <resultMap id="${className}Do" type="com.primeton.euler.srm.service.model.ConfigInstPO">
+        <#list table.columns as column>
+        <result column="${column.sqlName}" property="${column.columnNameLower}" />
+		</#list>
+    </resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+        <#list table.columns as column>${column.constantName}<#if column_has_next>,</#if></#list>
+	</sql>
+	
+	<insert id="${className}.insert" >
+        INSERT INTO ${table.sqlName} (
+        <#list table.columns as column>
+        	${column.sqlName} <#if column_has_next>,</#if>
+        </#list>
+        ) VALUES (
+        <#list table.columns as column>
+        	#${column.columnNameLower}# <#if column_has_next>,</#if>
+        </#list>        
+        )
+    </insert>    
+    
+    <update id="${className}.update" >
+        UPDATE ${table.sqlName} SET
+	        <#list table.notPkColumns as column>
+	        ${column.sqlName} = #${column.columnNameLower}# <#if column_has_next>,</#if>
+	        </#list>
+        WHERE 
+        	<#list table.compositeIdColumns as column>
+	        ${column.sqlName} = #${column.columnNameLower}# <#if column_has_next>,</#if>
+	        </#list>
+    </update>
+
+	<update id="${className}.logicDelete">
+     	UPDATE ${table.sqlName} SET DEL_FLAG = '1' WHERE ID = <#list table.compositeIdColumns as column>#${column.columnNameLower}# <#if column_has_next>,</#if></#list>
+   	</update>
+	
+    <delete id="${className}.delete">
+        DELETE FROM ${table.sqlName} WHERE 
+        <#list table.compositeIdColumns as column>
+        ${column.sqlName} = #${column.columnNameLower}# <#if column_has_next>,</#if>
+		</#list>
+    </delete>
+    
+    <select id="${className}.getById" resultMap="RM.${className}">
+	    SELECT <include refid="Base_Column_List"/>
+	        FROM ${table.sqlName} 
+	        WHERE 
+		<#list table.compositeIdColumns as column>
+        ${column.sqlName} = #${column.columnNameLower}# <#if column_has_next>,</#if>
+        </#list>
+    </select>
+    
+    <sql id="${className}.findPage.where">
+	    <dynamic prepend="WHERE">
+	       <#list table.columns as column>
+		        <#if column.isDateTimeColumn>
+		       <isNotEmpty prepend="AND" property="${column.columnNameLower}Begin">
+		             ${column.sqlName} >= #${column.columnNameLower}Begin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="${column.columnNameLower}End">
+		             ${column.sqlName} &lt;= #${column.columnNameLower}End#
+		       </isNotEmpty>
+				<#else>
+		       <isNotEmpty prepend="AND" property="${column.columnNameLower}">
+		             ${column.sqlName} = #${column.columnNameLower}#
+		       </isNotEmpty>
+				</#if>
+	       </#list>
+	    </dynamic>	
+	</sql>
+	
+	<select id="${className}.findPage.count" resultClass="long">
+        SELECT count(*) FROM ${table.sqlName} <include refid="findPage.where"/>    
+    </select>
+    
+</mapper> 
+

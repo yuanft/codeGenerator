@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="basepackage">com.primeton.euler.srm.service</entry>
+	
+	<!-- jsp namespace: web/${namespace}/${className}/list.jsp -->
+	<entry key="namespace">pages</entry>
+	<entry key="folderName">src.main</entry>
+	
+	<entry key="outRoot">.\euler-srm</entry>
+	<entry key="author">yuanft</entry>
+
+	<!-- 需要移除的表名前缀,使用逗号进行分隔多个前缀,示例值: t_,v_ -->
+	<entry key="tableRemovePrefixes"></entry>
+	
+	<entry key="jdbc.username">root</entry>
+	<entry key="jdbc.password">root</entry>
+		
+	<!-- oracle需要指定jdbc.schema,其它数据库忽略此项配置  -->
+	<entry key="jdbc.schema"></entry>
+	<entry key="jdbc.catalog"></entry>
+	
+	<!-- 数据库类型映射  -->
+	<entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>
+	<entry key="java_typemapping.java.sql.Date">java.util.Date</entry>
+	<entry key="java_typemapping.java.sql.Time">java.util.Date</entry>	
+	<entry key="java_typemapping.java.lang.Byte">Integer</entry>
+	<entry key="java_typemapping.java.lang.Short">Integer</entry>
+	<entry key="java_typemapping.java.math.BigDecimal">Long</entry>
+
+	<!-- Mysql --> 
+	<entry key="jdbc.url">jdbc:mysql://localhost:3306/srm?useUnicode=true&amp;characterEncoding=UTF-8</entry>
+	<entry key="jdbc.driver">com.mysql.jdbc.Driver</entry>
+
+	<!-- Oracle 	
+	<entry key="jdbc.url">jdbc:oracle:thin:@127.0.0.1:1521:orcl</entry>
+	<entry key="jdbc.driver">oracle.jdbc.driver.OracleDriver</entry>
+	-->
+
+</properties>

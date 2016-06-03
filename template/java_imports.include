@@ -1,0 +1,5 @@
+import java.util.*;
+
+import ${basepackage}.core.*;
+import ${basepackage}.model.*;
+import ${basepackage}.dao.*;
