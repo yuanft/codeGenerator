@@ -16,11 +16,6 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * 
- * @author badqiu
- * @email badqiu(a)gmail.com
- */
 public class IOHelper {
 	public static Writer NULL_WRITER = new NullWriter();
 	

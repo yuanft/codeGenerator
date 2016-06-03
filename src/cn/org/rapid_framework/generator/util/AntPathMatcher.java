@@ -38,10 +38,6 @@ import java.util.Map;
  * <li><code>org/&#42;&#42;/servlet/bla.jsp</code> - matches <code>org/springframework/servlet/bla.jsp</code> but also
  * <code>org/springframework/testing/servlet/bla.jsp</code> and <code>org/servlet/bla.jsp</code></li> </ul>
  *
- * @author Alef Arendsen
- * @author Juergen Hoeller
- * @author Rob Harrop
- * @author Arjen Poutsma
  */
 public class AntPathMatcher  {
 

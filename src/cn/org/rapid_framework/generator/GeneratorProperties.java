@@ -11,7 +11,6 @@ import cn.org.rapid_framework.generator.util.PropertiesHelper;
 import cn.org.rapid_framework.generator.util.PropertyPlaceholderHelper;
 import cn.org.rapid_framework.generator.util.PropertyPlaceholderHelper.PropertyPlaceholderConfigurerResolver;
 
-
 /**
  * 生成器配置类
  * 用于装载generator.properties,generator.xml文件

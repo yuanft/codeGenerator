@@ -29,8 +29,6 @@ import java.util.regex.Pattern;
  * <p>The pattern may contain special characters: '*' means zero or more characters; '?' means one and only one
  * character; '{' and '}' indicate a URI template pattern.
  *
- * @author Arjen Poutsma
- * @since 3.0
  */
 class AntPathStringMatcher {
 

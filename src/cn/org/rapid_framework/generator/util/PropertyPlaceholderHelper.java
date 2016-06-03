@@ -20,8 +20,6 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-
-
 /**
  * copy from springframework
  * 
@@ -29,10 +27,6 @@ import java.util.Set;
  * <code>${name}</code>. Using <code>PropertyPlaceholderHelper</code> these placeholders can be substituted for
  * user-supplied values. <p> Values for substitution can be supplied using a {@link Properties} instance or
  * using a {@link PlaceholderResolver}.
- * 
- * @author Juergen Hoeller
- * @author Rob Harrop
- * @since 3.0
  */
 public class PropertyPlaceholderHelper {
 

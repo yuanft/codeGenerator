@@ -29,7 +29,6 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 /**
  * 代码生成器核心引擎
- * 
  */
 public class Generator {
 	private static final String GENERATOR_INSERT_LOCATION = "generator-insert-location";
